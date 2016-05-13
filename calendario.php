@@ -21,13 +21,13 @@
             'Sat'
         );
         $diasSemana = array(
-            'Domingo',
-            'Segunda',
-            'Terça',
-            'Quarta',
-            'Quinta',
-            'Sexta',
-            'Sabado'
+            'Dom',
+            'Seg',
+            'Ter',
+            'Qua',
+            'Qui',
+            'Sex',
+            'Sab'
         );
 
         $arrayMes = array(
@@ -62,7 +62,8 @@
         echo '<table border="0" width="100%">';
         foreach($arrayMes as $num => $mes){
             echo '<tbody id="mes_'.$num.'" class="mes">';
-            echo '<tr><td colspan="7">'.$mes.'</td></tr><tr>';
+            echo '<tr class="mes_title"><td colspan="7">'.$mes.'</td></tr>';
+            echo '<tr class="dias_title">';
             foreach($diasSemana as $i => $day){
                 echo '<td>'.$day.'</td>';
             }
