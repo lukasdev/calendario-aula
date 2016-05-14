@@ -17,15 +17,25 @@ body{
     display:none;
 }
 .calendario td{
-    padding:5px;
-    background:#f0f0f0;
+    padding:6px;
+    color:#666;
+}
+.calendario td.evento{
+    background:#069;
+}
+.calendario td a{
+    color:#fff;
+    text-decoration:none;
+    display:block;
 }
 .calendario .mes_title{
     font-size:15px;
-    color:white;
 }
 .calendario .mes_title td{
     background:#069;
+    padding:5px;
+    padding-bottom:6px;
+    color:white;
 }
 
 .calendario #volta, .calendario #vai{

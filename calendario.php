@@ -1,5 +1,31 @@
 <?php
-    
+    function num($num){
+        return ($num < 10) ? '0'.$num : $num;
+    }
+
+    function montaEventos($info){
+        global $pdo;
+        //tabela, data, titulo
+        $tabela = $info['tabela'];
+        $data = $info['data'];
+        $titulo = $info['titulo'];
+        $link = $info['link'];
+
+        $eventos = $pdo->prepare("SELECT * FROM `".$tabela."` WHERE `".$data."` >= NOW()");
+        $eventos->execute();
+
+        $retorno = array();
+        while($row = $eventos->fetchObject()){
+            $dataArr = date('Y-m-d', strtotime($row->{$data}));
+            $retorno[$dataArr] = array(
+                'titulo' => $row->{$titulo},
+                'link' => $row->{$link}
+            );
+        }
+        return $retorno;
+    }
+
+
     function diasMeses(){
         $retorno = array();
 
@@ -10,7 +36,7 @@
         return $retorno;
     }
 
-    function montaCalendario(){
+    function montaCalendario($eventos = array()){
         $daysWeek = array(
             'Sun',
             'Mon',
@@ -78,7 +104,19 @@
                         $y+=1;
                     }
                 }
-                echo '<td>'.$numero.'</td>';
+                if(count($eventos) > 0){
+                    $month = num($num);
+                    $dayNow = num($numero);
+                    $date = date('Y').'-'.$month.'-'.$dayNow;
+                    if(in_array($date, array_keys($eventos))){
+                        $evento = $eventos[$date];
+                        echo '<td class="evento"><a href="'.$evento['link'].'" title="'.$evento['titulo'].'">'.$numero.'</a></td>';
+                    }else{
+                        echo '<td>'.$numero.'</td>';
+                    }
+                }else{
+                    echo '<td>'.$numero.'</td>';
+                }
                 if($y == 7){
                     $y=0;
                     echo '</tr><tr>';

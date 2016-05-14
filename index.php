@@ -1,5 +1,12 @@
 <?php
+    include 'conexao.php';
     include 'calendario.php';
+    $info = array(
+        'tabela' => 'eventos',
+        'data' => 'data',
+        'titulo' => 'titulo',
+        'link' => 'link'
+    );
 ?>
 <!DOCTYPE HTML>
 <html lang="pt-BR">
@@ -11,7 +18,10 @@
 
     <body>
     <div class="calendario">
-     <?php montaCalendario();?>
+     <?php 
+         $eventos = montaEventos($info);
+         montaCalendario($eventos);
+     ?>
     </div>
 
     <script type="text/javascript" src="js/jquery.js"></script>
