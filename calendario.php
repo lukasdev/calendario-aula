@@ -112,10 +112,10 @@
                         $evento = $eventos[$date];
                         echo '<td class="evento"><a href="'.$evento['link'].'" title="'.$evento['titulo'].'">'.$numero.'</a></td>';
                     }else{
-                        echo '<td>'.$numero.'</td>';
+                        echo '<td class="dia_'.$numero.'">'.$numero.'</td>';
                     }
                 }else{
-                    echo '<td>'.$numero.'</td>';
+                    echo '<td class="dia_'.$numero.'">'.$numero.'</td>';
                 }
                 if($y == 7){
                     $y=0;

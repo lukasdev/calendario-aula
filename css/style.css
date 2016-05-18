@@ -23,6 +23,10 @@ body{
 .calendario td.evento{
     background:#069;
 }
+.calendario td.atual{
+    background:#EC2F00;
+    color:white;
+}
 .calendario td a{
     color:#fff;
     text-decoration:none;
@@ -58,4 +62,27 @@ body{
 .calendario #vai{
     right:-1px;
     top:-1px;
+}
+.blue, .red{
+    float:left;
+    width:15px;
+    height:15px;
+    margin-right:5px;
+}
+.blue{
+    background:#069;
+}
+.red{
+    background:#EC2F00;
+}
+.calendario .legends{
+    float:left;
+    width:100%;
+    margin-top:10px;
+    text-align:left;
+}
+
+.calendario .legends .legenda{
+    float:left;
+    width:30%;
 }

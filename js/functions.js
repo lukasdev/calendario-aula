@@ -1,7 +1,9 @@
 $(function(){
     var data = new Date();
     var mesAtual = data.getMonth()+1;
-    $('#mes_'+mesAtual).show();
+    var diaAtual = data.getDate();
+
+    $('#mes_'+mesAtual).show().find('.dia_'+diaAtual).addClass('atual');
 
     function hideShow(){
         if(mesAtual > 12){
